@@ -38,7 +38,7 @@ export class SerialTimestampDecorator extends TerminalDecorator {
         }
         else {
             // this.logger.info(`Terminal is NOT of type SerialTabComponent`)
-            
+
             return
         }
     }
@@ -49,12 +49,14 @@ export class SerialTimestampDecorator extends TerminalDecorator {
 
     private attachToSession (terminal: BaseTerminalTabComponent<any>) {
         if (!terminal.session) {
-            this.logger.warn(`Session is empty !`)
             return
         }
 
-        // this.logger.info(`Attaching to session: ${terminal.title}`)
-        
+        if (terminal.session['serialTimestampAttached']) {
+            return
+        }
+
+        terminal.session['serialTimestampAttached'] = true
         terminal.session.middleware.push(new SerialTimestampMiddleware(this.config, this.logger))
     }
 }
