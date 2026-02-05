@@ -11,6 +11,7 @@ export class SerialTimestampSettingsTabComponent {
         'dd/mm/yyyy hh:mm:ss.SSS',
         'mm/dd/yyyy hh:mm:ss.SSS',
         'ISO 8601',
+        'hh:mm:ss.SSS',
     ]
 
     constructor (

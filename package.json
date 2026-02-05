@@ -1,6 +1,6 @@
 {
   "name": "tabby-serial-timestamp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A plugin that adds timestamp to serial sessions",
   "keywords": [
     "tabby-plugin"
@@ -15,7 +15,7 @@
   "files": [
     "dist"
   ],
-  "author": "Maxime Torrelli",
+  "author": "ek <git.ek.choi@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@angular/animations": "^15.2.6",

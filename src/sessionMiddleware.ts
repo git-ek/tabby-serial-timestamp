@@ -10,7 +10,7 @@ const None = 'None'
 const ISO = 'ISO 8601'
 const Europe = 'dd/mm/yyyy hh:mm:ss.SSS'
 const US = 'mm/dd/yyyy hh:mm:ss.SSS'
-
+const SIMPLE = 'hh:mm:ss.SSS'
 // @Injectable()
 export class SerialTimestampMiddleware extends SessionMiddleware {
     private logger: Logger
@@ -65,7 +65,7 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
             // occurences is set to 1 when LF was not found to force the for loop once
             occurences = data.toString('utf8').split('\n').length > 1 ? data.toString('utf8').split('\n').length-1 : data.toString('utf8').split('\n').length
             strRemaining = data.toString('utf8')
-            
+
             // this.logger.info(`occurences ${occurences}`)
             // this.logger.info(`data.toString('utf8').split(CRLF OR LF).length ${data.toString('utf8').split(/\r\n|\n/).length}`)
             // this.logger.info(`data.toString('utf8').length ${data.toString('utf8').length}`)
@@ -134,7 +134,7 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
                     newData = Buffer.concat([Buffer.from("["), Buffer.from(currentDate), Buffer.from("] "), Buffer.from(strRemaining)])
 
                     this.outputToTerminal.next(newData)
-                    
+
                     if (strRemaining.charAt(strRemaining.length - 1) === '\r') {
                         this.startOfLine = true
                     }
@@ -187,6 +187,12 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
 
                 sDate = sDate.concat((date.getMonth() + 1).toString(10).padStart(2, "0"), "/", date.getDate().toString(10).padStart(2, "0"), "/", date.getFullYear().toString(10), " ",
                     date.getHours().toString(10).padStart(2, "0"), ":", date.getMinutes().toString(10).padStart(2, "0"), ":", date.getSeconds().toString(10).padStart(2, "0"), ".", date.getMilliseconds().toString(10).padStart(3, "0"))
+
+                break;
+            case SIMPLE:
+                date = new Date()
+
+                sDate = sDate.concat(date.getHours().toString(10).padStart(2, "0"), ":", date.getMinutes().toString(10).padStart(2, "0"), ":", date.getSeconds().toString(10).padStart(2, "0"), ".", date.getMilliseconds().toString(10).padStart(3, "0"))
 
                 break;
             default:

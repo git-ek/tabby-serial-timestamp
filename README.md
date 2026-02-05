@@ -1,4 +1,4 @@
-# Serial Timestamp 
+# Serial Timestamp
 
 ## What is Serial-Timestamp for Tabby ?
 
@@ -11,7 +11,13 @@ This plugin adds timestamp to a serial tab using:
 - Config file options
 - Setting tabs
 
+## Contributors
+- **Maxime Torrelli**: Original author
+- **ek**: Forked and updated to support additional formats (v1.0.4+)
+
 ## Changelog
+- **v1.0.4**:
+    - Add `SIMPLE` timestamp format option (`hh:mm:ss.SSS`)
 - **v1.0.3**:
     - Correct issue where date was not being prepended with timestamp for data arriving after a CR not followed by a LF
 - **v1.0.2**:
